@@ -15,6 +15,7 @@
 
     <h1>hello world</h1>
     <button onclick="storageAccess()" id="button" style="display: none;">storage access</button>
+    <button onclick="saveCookie()" id="button">save cookie</button>
     <textarea id="ta"></textarea>
 
     <script>
@@ -25,10 +26,15 @@
             );
         }
 
+        function saveCookie() {
+            document.cookie = 'foo=bar; SameSite=None; Secure;'
+        }
+
         document.hasStorageAccess().then((hasAccess) => {
             if (hasAccess) {
-                document.getElementById('ta').innerText = document.cookie
+                document.getElementById('ta').innerText = document.cookie;
             } else {
+                alert('xx');
                 document.getElementById('button').style.display = 'block';
             }
         });
