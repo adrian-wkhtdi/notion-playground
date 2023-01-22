@@ -7,32 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        html {
-            animation: bg 3s infinite ease-in-out;
-        }
 
-        @keyframes bg {
-            0% {
-                background-color: aqua;
-            }
-
-            50% {
-                background-color: coral;
-            }
-
-            100% {
-                background-color: goldenrod;
-            }
-        }
     </style>
 </head>
 
 <body>
 
     <h1>hello world</h1>
+    <button onclick="storageAccess()" id="button" style="display: none;">storage access</button>
+    <textarea id="ta"></textarea>
 
-    <img src="babygif.gif" />
+    <script>
+        function storageAccess() {
+            document.requestStorageAccess().then(
+                () => { console.log('access granted') },
+                () => { console.log('access denied') }
+            );
+        }
 
+        document.hasStorageAccess().then((hasAccess) => {
+            if (hasAccess) {
+                document.getElementById('ta').innerText = document.cookie
+            } else {
+                document.getElementById('button').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 
 </html>
