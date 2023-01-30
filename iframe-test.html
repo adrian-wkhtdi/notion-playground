@@ -10,10 +10,21 @@
 
 <body>
 
-    <pre id="foo">n/a</pre>
+    <dl>
+        <dt>document.referrer</dt>
+        <dd id="referrer">-</dd>
+
+        <dt>document.location</dt>
+        <dd id="location">-</dd>
+
+        <dt>window.parent.location</dt>
+        <dd id="parent-location">-</dd>
+    </dl>
 
     <script>
-        document.getElementById('foo').innerText = document.referrer || document.location;
+        document.getElementById('referrer').innerText = document.referrer;
+        document.getElementById('location').innerText = document.location;
+        document.getElementById('parent-location').innerText = window.parent.location;
     </script>
 
 </body>
