@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #text {
+            background-color: #f3ec78;
+            background-image: linear-gradient(45deg, var(--from), var(--to));
+            background-size: 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-text-fill-color: transparent;
+            display: inline-block;
+            font-size: 100vh;
+            line-height: 1;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="text"></div>
+
+    <script>
+        const url = new URL(window.location.href)
+        const text = url.searchParams.get('text')
+        const from = url.searchParams.get('from') || 'blue'
+        const to = url.searchParams.get('to') || 'orange'
+        if (text) {
+            document.getElementById('text').innerText = text
+        }
+        if (from && to) {
+            document.getElementById('text').style = `--from: ${from}; --to: ${to};`
+        }
+    </script>
+
+</body>
+
+</html>
