@@ -29,10 +29,24 @@
 <body>
 
   <div>
-    <video src="[url]#t=[t1]"></video>
-    <video src="[url]#t=[t2]"></video>
-    <video src="[url]#t=[t3]"></video>
+    <video></video>
+    <video></video>
+    <video></video>
   </div>
+
+  <script>
+    const url = new URL(window.location.href)
+    const video = url.searchParams.get('video')
+    const t = url.searchParams.get('t')?.split(',') || []
+
+    const $video = document.getElementsByTagName('video')
+
+    if (video && t.length === $video.length) {
+      Array.from($video).map((v, i) => {
+        v.src = `${decodeURIComponent(video)}#t=${t[i] || ''}`
+      })
+    }
+  </script>
 
 </body>
 </html>
